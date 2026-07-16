@@ -95,11 +95,11 @@
               <div class="shelf-name text-weight-bold">{{ product.name }}</div>
               <div class="shelf-price" :class="{'shelf-stacked': product.oferta}">
                 <template v-if="product.oferta">
-                  <span class="old-price">{{ formatPrice(product.price) }}</span>
-                  <span class="sale-price">{{ formatPrice(product.descuento) }}</span>
+                  <span class="old-price">{{ formatPrice(product.price, product.currency) }}</span>
+                  <span class="sale-price">{{ formatPrice(product.descuento, product.currency) }}</span>
                 </template>
                 <template v-else>
-                  <span class="sale-price">{{ formatPrice(product.price) }}</span>
+                  <span class="sale-price">{{ formatPrice(product.price, product.currency) }}</span>
                 </template>
               </div>
             </div>
@@ -122,6 +122,7 @@ import { defaultCategories } from 'src/config/categories';
 import { useProducts } from 'src/composables/useProducts';
 import { useProductPreview } from 'src/composables/useProductPreview';
 import { useMeta } from 'quasar';
+import { formatPrice } from 'src/utils/format';
 
 const preview = useProductPreview();
 
@@ -154,14 +155,6 @@ const featuredProducts = computed(() => {
 
   return [...selectedOffers, ...selectedNonOffers];
 });
-
-function formatPrice(value: number): string {
-  return new Intl.NumberFormat('es-CU', {
-    style: 'currency',
-    currency: 'CUP',
-    maximumFractionDigits: 0,
-  }).format(value);
-}
 
 interface Particle {
   x: number;
@@ -329,8 +322,8 @@ useMeta({
 }
 
 .hero-logo {
-  width: 140px;
-  height: 140px;
+  width: 250px;
+  height: 250px;
   border-radius: 50%;
   animation:
     hero-scale-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) both,

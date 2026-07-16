@@ -5,6 +5,7 @@ export interface Product {
   image: string;
   category: string;
   subcategory?: string;
+  currency?: string;
   estado: 'Disponible' | 'Agotado';
   oferta?: boolean;
   descuento: number;
@@ -21,6 +22,7 @@ export interface ProductFormData {
   image: string;
   category: string;
   subcategory?: string;
+  currency: string;
   estado: 'Disponible' | 'Agotado';
   oferta: boolean;
   descuento: number;

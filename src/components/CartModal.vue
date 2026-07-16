@@ -34,11 +34,11 @@
               <q-item-label class="text-weight-bold">{{ it.product.name }}</q-item-label>
               <q-item-label caption class="text-grey-7">
                 <template v-if="it.product.oferta">
-                  {{ formatPrice(it.product.descuento) }}
+                  {{ formatPrice(it.product.descuento, it.product.currency) }}
                   <span class="offer-tag">(Oferta)</span>
                 </template>
                 <template v-else>
-                  {{ formatPrice(it.product.price) }}
+                  {{ formatPrice(it.product.price, it.product.currency) }}
                 </template>
               </q-item-label>
               <div class="row items-center q-gutter-sm q-mt-xs">
@@ -49,7 +49,7 @@
             </q-item-section>
             <q-item-section side top>
               <div class="text-weight-bold text-h6">
-                {{ formatPrice(effectivePrice(it.product) * it.quantity) }}
+                {{ formatPrice(effectivePrice(it.product) * it.quantity, it.product.currency) }}
               </div>
               <q-btn
                 flat
@@ -67,8 +67,10 @@
       <q-separator class="bg-grey-3" />
 
       <q-card-section v-if="cart.items.length" class="row items-center justify-between q-gutter-sm">
-        <div class="text-subtitle1 text-weight-bold">
-          Total: {{ formatPrice(cart.total) }}
+        <div class="q-gutter-xs">
+          <div v-for="(total, currency) in cart.totalByCurrency" :key="currency" class="text-subtitle1 text-weight-bold">
+            Total {{ currency }}: {{ formatPrice(total, currency) }}
+          </div>
         </div>
         <div class="row q-gutter-sm">
           <q-btn
@@ -102,6 +104,7 @@ import { useCartStore } from 'src/stores/cart';
 import { useQuasar } from 'quasar';
 import { whatsappConfig } from 'src/config/whatsapp';
 import type { Product } from 'src/stores/types';
+import { formatPrice } from 'src/utils/format';
 
 const cart = useCartStore();
 const $q = useQuasar();
@@ -142,13 +145,17 @@ function buyWhatsApp() {
   const lines: string[] = [];
   lines.push(`Hola, quiero hacer el siguiente pedido:`);
   cart.items.forEach((it, idx) => {
-    const label = it.product.oferta ? `${formatPrice(effectivePrice(it.product) * it.quantity)} (Oferta)` : formatPrice(effectivePrice(it.product) * it.quantity);
+    const label = it.product.oferta
+      ? `${formatPrice(effectivePrice(it.product) * it.quantity, it.product.currency)} (Oferta)`
+      : formatPrice(effectivePrice(it.product) * it.quantity, it.product.currency);
     lines.push(
       `${idx + 1}. ${it.product.name} x${it.quantity} — ${label}`,
     );
   });
   lines.push('');
-  lines.push(`Total: ${formatPrice(cart.total)}`);
+  for (const [currency, total] of Object.entries(cart.totalByCurrency)) {
+    lines.push(`Total ${currency}: ${formatPrice(total, currency)}`);
+  }
   const text = encodeURIComponent(lines.join('\n'));
   const url = `https://wa.me/${whatsappConfig.number}?text=${text}`;
   window.open(url, '_blank');
@@ -162,13 +169,6 @@ function close() {
   innerVal.value = false;
 }
 
-function formatPrice(n: number): string {
-  return new Intl.NumberFormat('es-CU', {
-    style: 'currency',
-    currency: 'CUP',
-    maximumFractionDigits: 0,
-  }).format(n);
-}
 </script>
 
 <style scoped>
