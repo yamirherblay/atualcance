@@ -32,7 +32,7 @@
           :rules="[(val) => !!val?.trim() || 'El nombre es obligatorio']"
         />
       </div>
-      <div class="col-6">
+      <div class="col-4">
         <q-input
           v-model.number="localProduct.price"
           type="number"
@@ -42,7 +42,18 @@
           :rules="[(val) => val > 0 || 'El precio debe ser mayor a 0']"
         />
       </div>
-      <div class="col-6">
+      <div class="col-4">
+        <q-select
+          v-model="localProduct.currency"
+          :options="currencyOptions"
+          label="Moneda"
+          dense
+          outlined
+          emit-value
+          map-options
+        />
+      </div>
+      <div class="col-4">
         <q-select
           v-model="localProduct.category"
           :options="categoryOptions"
@@ -166,6 +177,11 @@ watch(
   },
   { deep: true },
 );
+
+const currencyOptions = [
+  { label: 'CUP', value: 'CUP' },
+  { label: 'USD', value: 'USD' },
+];
 
 const estadoOptions = [
   { label: 'Disponible', value: 'Disponible' },
@@ -301,6 +317,7 @@ async function onSubmit() {
       departament: DEPARTAMENT,
       name: localProduct.name,
       price: localProduct.price,
+      currency: localProduct.currency || 'CUP',
       category: localProduct.category,
       subcategory: localProduct.subcategory || null,
       image: localProduct.image,

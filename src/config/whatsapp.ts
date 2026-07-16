@@ -7,8 +7,8 @@ export const whatsappConfig = {
     product: (productName: string, price: string) =>
       `Hola, me interesa: ${productName} - ${price}`,
 
-    cart: (items: string, total: string) =>
-      `Hola, quiero hacer el siguiente pedido:\n\n${items}\n\nTotal: ${total}`,
+    cart: (items: string, totalsBlock: string) =>
+      `Hola, quiero hacer el siguiente pedido:\n\n${items}\n\n${totalsBlock}`,
 
     contact: () =>
       `Hola, me gustaría obtener información sobre sus productos.`,

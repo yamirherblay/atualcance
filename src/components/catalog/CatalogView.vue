@@ -6,21 +6,16 @@
       @select="handleCategorySelect"
     />
 
-    <q-input
-      v-model="searchQuery"
-      dense
-      outlined
-      class="q-my-md"
-      placeholder="Buscar productos..."
-      clearable
-    >
-      <template #prepend>
-        <q-icon name="search" />
-      </template>
-    </q-input>
+    <ViewToggle
+      :search="filterQuery"
+      :view-mode="viewMode"
+      @update:search="handleSearchUpdate"
+      @update:view-mode="handleViewModeUpdate"
+    />
 
     <ProductGrid
       :products="displayedProducts"
+      :view-mode="viewMode"
       @whatsapp="handleWhatsApp"
       @add-to-cart="handleAddToCart"
     >
@@ -38,13 +33,17 @@
 import { ref, computed, onMounted, watch, nextTick, onBeforeUnmount } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import ProductFilters from './ProductFilters.vue';
+import ViewToggle from './ViewToggle.vue';
 import ProductGrid from './ProductGrid.vue';
+import type { ViewMode } from './types';
 import { useProducts } from 'src/composables/useProducts';
 import { useWhatsApp } from 'src/composables/useWhatsApp';
 import { useGlobalSearch } from 'src/composables/useGlobalSearch';
 import { useCartStore } from 'src/stores/cart';
 import type { Product } from 'src/stores/types';
 import { useQuasar } from 'quasar';
+
+const LS_KEY = 'shalom_catalog_view';
 
 const route = useRoute();
 const router = useRouter();
@@ -55,6 +54,8 @@ const cartStore = useCartStore();
 
 const selectedCategory = ref('all');
 const { searchQuery } = useGlobalSearch();
+
+const viewMode = ref<ViewMode>('small_grid');
 
 const PAGE_SIZE = 15;
 const visibleCount = ref(PAGE_SIZE);
@@ -106,6 +107,15 @@ watch([selectedCategory, filterQuery], () => {
   visibleCount.value = PAGE_SIZE;
 });
 
+function handleSearchUpdate(value: string) {
+  searchQuery.value = value;
+}
+
+function handleViewModeUpdate(value: ViewMode) {
+  viewMode.value = value;
+  localStorage.setItem(LS_KEY, value);
+}
+
 function handleCategorySelect(key: string) {
   selectedCategory.value = key;
   void router.replace({
@@ -132,6 +142,11 @@ function capitalize(s: string): string {
 }
 
 onMounted(async () => {
+  const saved = localStorage.getItem(LS_KEY);
+  if (saved && ['small_grid', 'large_grid', 'list'].includes(saved)) {
+    viewMode.value = saved as ViewMode;
+  }
+
   await fetchProducts();
   if (route.query.cat && typeof route.query.cat === 'string') {
     selectedCategory.value = route.query.cat;

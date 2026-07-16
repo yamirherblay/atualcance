@@ -102,7 +102,7 @@
         </template>
         <template #body-cell-price="props">
           <q-td :props="props" style="font-family: 'JetBrains Mono', monospace;">
-            {{ formatPrice(props.row.price) }}
+            {{ formatPrice(props.row.price, props.row.currency) }}
           </q-td>
         </template>
         <template #body-cell-disponibilidad="props">
@@ -148,7 +148,7 @@
               </div>
               <div class="q-mb-xs">
                 <span class="text-caption text-grey-7">Precio</span>
-                <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; color: #1C1C1C; font-weight: 600;">{{ formatPrice(viewProduct?.price) }}</div>
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; color: #1C1C1C; font-weight: 600;">{{ formatPrice(viewProduct?.price, viewProduct?.currency) }}</div>
               </div>
               <div class="q-mb-xs">
                 <span class="text-caption text-grey-7">Categoría</span>
@@ -216,11 +216,11 @@
 
 <script setup lang="ts">
 import { onMounted, ref, computed } from 'vue';
-import type { QTableColumn } from 'quasar';
-import { useMeta, useQuasar } from 'quasar';
+import { useMeta, useQuasar, type QTableColumn } from 'quasar';
+import { branding } from 'src/config/branding';
 
 useMeta({
-  title: 'Admin | Shalom',
+  title: `Admin | ${branding.name}`,
   meta: {
     robots: { name: 'robots', content: 'noindex, nofollow' },
   },
@@ -232,6 +232,7 @@ import { useProducts } from 'src/composables/useProducts';
 import { supabase } from 'boot/supabase';
 import { getAdminBusinessId } from 'src/config/business';
 import type { Product } from 'src/stores/types';
+import { formatPrice as _formatPrice } from 'src/utils/format';
 
 const products = ref<Product[]>([]);
 const filter = ref('');
@@ -246,6 +247,7 @@ const newProduct = ref<Product>({
   id: '',
   name: '',
   price: 0,
+  currency: 'CUP',
   category: '',
   image: '',
   new: false,
@@ -261,6 +263,7 @@ const editProduct = ref<Product>({
   id: '',
   name: '',
   price: 0,
+  currency: 'CUP',
   category: '',
   image: '',
   new: false,
@@ -294,8 +297,9 @@ const columns = <QTableColumn[]>[
     field: 'price',
     align: 'right',
     sortable: true,
-    format: (v: number) => formatPrice(v),
+    format: (v: number, row: Record<string, unknown>) => formatPrice(v, row.currency as string | undefined),
   },
+  { name: 'currency', label: 'Moneda', field: 'currency', align: 'center', style: 'width: 60px' },
   { name: 'category', label: 'Categoría', field: 'category', align: 'left', sortable: true },
   {
     name: 'subcategory',
@@ -411,13 +415,9 @@ async function handleDelete(row: Product) {
   }
 }
 
-function formatPrice(val?: number) {
+function formatPrice(val?: number, currency?: string) {
   if (val == null) return '-';
-  return new Intl.NumberFormat('es-CU', {
-    style: 'currency',
-    currency: 'CUP',
-    maximumFractionDigits: 0,
-  }).format(val);
+  return _formatPrice(val, currency);
 }
 
 onMounted(async () => {

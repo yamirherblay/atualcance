@@ -60,9 +60,10 @@ import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useAuthStore } from 'src/stores/auth';
 import { useMeta } from 'quasar';
+import { branding } from 'src/config/branding';
 
 useMeta({
-  title: 'Acceso | Shalom',
+  title: `Acceso | ${branding.name}`,
   meta: {
     robots: { name: 'robots', content: 'noindex, nofollow' },
   },

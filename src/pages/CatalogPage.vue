@@ -9,16 +9,17 @@
 <script setup lang="ts">
 import { CatalogView } from 'src/components/catalog';
 import { useMeta } from 'quasar';
+import { branding } from 'src/config/branding';
 
 useMeta({
-  title: 'Catálogo | Shalom',
+  title: `Catálogo | ${branding.name}`,
   meta: {
-    description: { name: 'description', content: 'Catálogo de productos Shalom — alimentos, bebidas, aseo, limpieza, hogar y más.' },
-    'og:title': { property: 'og:title', content: 'Catálogo | Shalom' },
-    'og:description': { property: 'og:description', content: 'Catálogo de productos Shalom' },
+    description: { name: 'description', content: `Catálogo de productos ${branding.name} — alimentos, bebidas, aseo, limpieza, hogar y más.` },
+    'og:title': { property: 'og:title', content: `Catálogo | ${branding.name}` },
+    'og:description': { property: 'og:description', content: `Catálogo de productos ${branding.name}` },
     'og:url': { property: 'og:url', content: '/catalogo' },
-    'twitter:title': { name: 'twitter:title', content: 'Catálogo | Shalom' },
-    'twitter:description': { name: 'twitter:description', content: 'Catálogo de productos Shalom' },
+    'twitter:title': { name: 'twitter:title', content: `Catálogo | ${branding.name}` },
+    'twitter:description': { name: 'twitter:description', content: `Catálogo de productos ${branding.name}` },
   },
 });
 </script>

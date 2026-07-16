@@ -1,6 +1,7 @@
 import { whatsappConfig, formatWhatsAppUrl } from 'src/config/whatsapp';
 import type { Product } from 'src/stores/types';
 import type { CartItem } from 'src/stores/types';
+import { formatPrice } from 'src/utils/format';
 
 export function useWhatsApp() {
   function sendProductRequest(product: Product) {
@@ -14,13 +15,17 @@ export function useWhatsApp() {
       .map((item) => `${item.product.name} x${item.quantity} - ${formatProductPrice(item.product)}`)
       .join('\n');
 
-    const total = items.reduce((sum, item) => {
+    const totals: Record<string, number> = {};
+    items.forEach((item) => {
+      const c = item.product.currency || 'CUP';
       const price = item.product.descuento || item.product.price;
-      return sum + price * item.quantity;
-    }, 0);
+      totals[c] = (totals[c] || 0) + price * item.quantity;
+    });
+    const totalLines = Object.entries(totals)
+      .map(([currency, total]) => `Total ${currency}: ${formatPrice(total, currency)}`)
+      .join('\n');
 
-    const totalFormatted = formatPrice(total);
-    const message = whatsappConfig.messageTemplates.cart(itemsList, totalFormatted);
+    const message = whatsappConfig.messageTemplates.cart(itemsList, totalLines);
     window.open(formatWhatsAppUrl(message), '_blank');
   }
 
@@ -38,15 +43,7 @@ export function useWhatsApp() {
 
 function formatProductPrice(product: Product): string {
   const price = product.oferta && product.descuento ? product.descuento : product.price;
-  const label = formatPrice(price);
-  return product.oferta ? `${label} (Oferta)` : label;
-}
-
-function formatPrice(value: number): string {
-  const formatted = new Intl.NumberFormat('es-CU', {
-    style: 'currency',
-    currency: 'CUP',
-    maximumFractionDigits: 0,
-  }).format(value);
-  return `${formatted} CUP`;
+  const label = formatPrice(price, product.currency);
+  const suffix = product.currency && product.currency !== 'CUP' ? product.currency : '';
+  return product.oferta ? `${label}${suffix} (Oferta)` : `${label}${suffix}`;
 }
