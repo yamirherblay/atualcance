@@ -4,12 +4,12 @@
       <q-toolbar>
         <q-toolbar-title>
           <q-btn flat no-caps :to="'/'">
-            <span class="text-white" style="font-family: 'DM Serif Display', serif; letter-spacing: 2px; font-size: 1.25rem; font-weight: 400;">Shalom</span>
+            <span class="text-white" style="font-family: 'Lexend', serif; letter-spacing: 2px; font-size: 1.25rem; font-weight: 400;">A tu Alcance</span>
           </q-btn>
         </q-toolbar-title>
 
         <div class="gt-sm row items-center q-gutter-x-sm">
-          <q-btn flat dense label="Catálogo" to="/catalogo" class="text-white" style="font-family: 'DM Sans', sans-serif; letter-spacing: 1px; font-weight: 500;" />
+          <q-btn flat dense label="Catálogo" to="/catalogo" class="text-white" style="font-family: 'Source Sans 3', sans-serif; letter-spacing: 1px; font-weight: 500;" />
         </div>
 
         <q-btn
@@ -113,6 +113,7 @@ import { useQuasar } from 'quasar';
 import { useCartStore } from 'src/stores/cart';
 import { useAuthStore } from 'src/stores/auth';
 import { useGlobalSearch } from 'src/composables/useGlobalSearch';
+
 import { formatWhatsAppUrl, whatsappConfig } from 'src/config/whatsapp';
 import ProductPreview from 'components/catalog/ProductPreview.vue';
 import CartModal from 'components/CartModal.vue';
@@ -183,8 +184,8 @@ function openWhatsApp() {
 </script>
 
 <style lang="scss">
-.text-terracota {
-  color: #C17A4B;
+.text-vermillion {
+  color: #C84B31;
 }
 
 .search-panel {
@@ -203,7 +204,7 @@ function openWhatsApp() {
   }
 
       :deep(.q-field__native) {
-        font-family: 'DM Sans', sans-serif;
+        font-family: 'Source Sans 3', sans-serif;
         font-size: 0.9rem;
       }
 }
@@ -223,7 +224,7 @@ function openWhatsApp() {
   .q-tab__label {
     font-size: 0.8rem;
     font-weight: 500;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Source Sans 3', sans-serif;
   }
 
   @media (hover: hover) {

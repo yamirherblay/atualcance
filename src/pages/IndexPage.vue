@@ -5,9 +5,9 @@
       <canvas ref="particleCanvas" class="hero-particles"></canvas>
       <div class="hero-glow"></div>
       <div class="hero-content column items-center text-center q-pa-lg">
-        <q-img src="/images/logo.jpeg" alt="Shalom" class="hero-logo q-mb-lg" ratio="1" />
-        <div class="hero-title hero-enter-title">SHALOM</div>
-        <div class="hero-subtitle hero-enter-sub">Tu tienda de confianza</div>
+        <q-img src="/images/logo.png" alt="A tu Alcance" class="hero-logo q-mb-lg" ratio="1" />
+      
+        <div class="hero-subtitle hero-enter-sub">{{ branding.hero.subtitle }}</div>
         <q-btn
           color="accent"
           size="lg"
@@ -41,8 +41,8 @@
             :style="{ transitionDelay: `${index * 80}ms` }"
             @click="$router.push(`/catalogo?cat=${cat.key}`)"
           >
-            <q-card flat bordered class="category-inner bg-white" :style="{ '--cat-color': categoryColors[cat.key] || '#C17A4B' }">
-              <div class="terracota-border-top"></div>
+            <q-card flat bordered class="category-inner bg-white" :style="{ '--cat-color': categoryColors[cat.key] || '#C84B31' }">
+              <div class="vermillion-border-top"></div>
               <q-card-section class="column items-center text-center q-py-lg">
                 <q-icon :name="cat.icon" size="2.5rem" class="category-icon q-mb-sm" />
                 <div class="category-label">{{ cat.label }}</div>
@@ -129,7 +129,7 @@ const displayCategories = defaultCategories.filter((c) => c.key !== 'all');
 const revealedCategories = ref(false);
 
 const categoryColors: Record<string, string> = {
-  alimentos: '#E8A838',
+  alimentos: '#C84B31',
   bebidas: '#5FA8D3',
   aseo: '#C08497',
   limpieza: '#7EC8B6',
@@ -293,7 +293,7 @@ useMeta({
 
 /* Hero */
 .hero-section {
-  background: #1A2E24;
+  background: #1A2F2B;
   min-height: 70vh;
   display: flex;
   align-items: center;
@@ -309,7 +309,7 @@ useMeta({
   width: 500px;
   height: 500px;
   transform: translate(-50%, -50%);
-  background: radial-gradient(ellipse at center, rgba(232, 168, 56, 0.2) 0%, transparent 60%);
+  background: radial-gradient(ellipse at center, rgba(200, 75, 49, 0.15) 0%, transparent 60%);
   pointer-events: none;
   z-index: 0;
 }
@@ -339,7 +339,7 @@ useMeta({
 }
 
 .hero-title {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Lexend', serif;
   font-size: 3rem;
   letter-spacing: 6px;
   color: #fff;
@@ -347,7 +347,7 @@ useMeta({
 }
 
 .hero-subtitle {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 1rem;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.75);
@@ -365,7 +365,7 @@ useMeta({
 }
 
 .hero-tag {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 0.75rem;
   font-weight: 500;
   padding: 5px 14px;
@@ -376,7 +376,7 @@ useMeta({
 }
 
 .hero-cta {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-weight: 600;
   border-radius: 6px;
 }
@@ -456,14 +456,14 @@ useMeta({
 
 /* Categories */
 .categories-section {
-  background: #F5F0E8;
+  background: #F5EDE0;
 }
 
 .categories-title {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Lexend', serif;
   font-size: 1.75rem;
   letter-spacing: 2px;
-  color: #2D4A3B;
+  color: #1A2F2B;
 }
 
 .category-card {
@@ -487,7 +487,7 @@ useMeta({
   position: absolute;
   inset: 0;
   opacity: 0;
-  background: radial-gradient(circle at 50% 40%, rgba(193, 122, 75, 0.14), transparent 70%);
+  background: radial-gradient(circle at 50% 40%, rgba(200, 75, 49, 0.14), transparent 70%);
   transition: opacity 0.3s ease;
   pointer-events: none;
 }
@@ -498,15 +498,15 @@ useMeta({
 
 .category-inner:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(45, 74, 59, 0.12);
+  box-shadow: 0 6px 16px rgba(26, 47, 43, 0.12);
 }
 
 .category-inner:hover::before {
   opacity: 1;
 }
 
-.category-inner:hover .terracota-border-top {
-  border-top-color: var(--cat-color, #C17A4B);
+.category-inner:hover .vermillion-border-top {
+  border-top-color: var(--cat-color, #C84B31);
 }
 
 .category-icon {
@@ -515,27 +515,27 @@ useMeta({
 }
 
 .category-inner:hover .category-icon {
-  color: var(--cat-color, #C17A4B);
+  color: var(--cat-color, #C84B31);
 }
 
 .category-label {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.5px;
-  color: #2C2C2C;
+  color: #1C1C1C;
 }
 
 /* Shelf (featured products) */
 .shelf-section {
-  background: #F5F0E8;
+  background: #F5EDE0;
 }
 
 .shelf-title {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Lexend', serif;
   font-size: 1.75rem;
   letter-spacing: 2px;
-  color: #2D4A3B;
+  color: #1A2F2B;
 }
 
 .shelf-card {
@@ -556,9 +556,9 @@ useMeta({
   position: absolute;
   top: 14px;
   right: -30px;
-  background: #E8A838;
+  background: #C84B31;
   color: #1A1A1A;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 1px;
@@ -572,29 +572,29 @@ useMeta({
 
 .shelf-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(45, 74, 59, 0.1);
+  box-shadow: 0 8px 24px rgba(26, 47, 43, 0.1);
 }
 
 .shelf-divider {
   height: 1px;
-  background: #C17A4B;
+  background: #C84B31;
   opacity: 0.3;
   margin: 0;
 }
 
 .shelf-name {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.3px;
-  color: #2C2C2C;
+  color: #1C1C1C;
   line-height: 1.2;
 }
 
 .shelf-price {
   font-family: 'JetBrains Mono', monospace;
   font-size: 1rem;
-  color: #2C2C2C;
+  color: #1C1C1C;
   margin-top: 2px;
 
   .old-price {
@@ -618,7 +618,7 @@ useMeta({
 }
 
 .shelf-badge {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 0.65rem;
   font-weight: 500;
   padding: 2px 6px;
@@ -627,11 +627,11 @@ useMeta({
 }
 
 .shelf-link {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 0.95rem;
   font-weight: 500;
   letter-spacing: 0.5px;
-  color: #C17A4B;
+  color: #C84B31;
 }
 
 /* Responsive hero */

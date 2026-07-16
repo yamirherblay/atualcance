@@ -152,7 +152,7 @@ onBeforeUnmount(() => observer?.disconnect());
 
 <style scoped>
 .catalog-page {
-  background: #F5F0E8;
+  background: #F5EDE0;
 }
 
 .sentinel {

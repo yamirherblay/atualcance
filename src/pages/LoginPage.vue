@@ -1,7 +1,7 @@
 <template>
   <q-page class="row justify-center items-center q-pa-md" style="min-height: 70vh">
     <q-card flat bordered class="q-pa-lg" style="max-width: 420px; width: 100%">
-      <q-img src="/images/logo.jpeg" alt="Shalom" @click="goHome" />
+      <q-img src="/images/logo.png" alt="Shalom" @click="goHome" />
       <q-card-section class="text-center">
         <div class="text-h6 q-mb-xs">Acceso de Administrador</div>
         <div class="text-caption text-grey-7">Ingrese sus credenciales para continuar</div>

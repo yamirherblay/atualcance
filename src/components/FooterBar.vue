@@ -11,7 +11,7 @@
             ratio="1"
           />
           <div>
-            <div style="font-family: 'DM Serif Display', serif; letter-spacing: 2px; font-size: 1.1rem;">{{ brand }}</div>
+            <div style="font-family: 'Lexend', serif; letter-spacing: 2px; font-size: 1.1rem;">{{ brand }}</div>
             <div class="text-caption text-grey-4" style="letter-spacing: 1px;">Tu tienda de confianza</div>
           </div>
         </div>
@@ -59,7 +59,7 @@
         <span class="sello-text" style="font-size: 0.45rem; letter-spacing: 1px;">paz</span>
       </div>
     </div>
-    <div class="text-center q-py-sm" style="color: #C17A4B; letter-spacing: 8px; font-size: 1rem;">
+    <div class="text-center q-py-sm" style="color: #C84B31; letter-spacing: 8px; font-size: 1rem;">
       ★ ★ ★
     </div>
     <div class="q-px-md q-py-xs text-caption text-center text-grey-4">

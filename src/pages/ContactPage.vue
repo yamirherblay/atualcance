@@ -83,15 +83,15 @@ const { sendContactMessage } = useWhatsApp();
 
 <style scoped>
 .contact-page {
-  background: #F5F0E8;
+  background: #F5EDE0;
   min-height: 60vh;
 }
 
 .contact-title {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Lexend', serif;
   font-size: 2rem;
   letter-spacing: 4px;
-  color: #2C2C2C;
+  color: #1C1C1C;
 }
 
 .contact-card {
@@ -100,6 +100,6 @@ const { sendContactMessage } = useWhatsApp();
 
 .contact-rule {
   height: 2px;
-  background: #C17A4B;
+  background: #C84B31;
 }
 </style>

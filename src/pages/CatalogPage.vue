@@ -25,13 +25,13 @@ useMeta({
 
 <style scoped>
 .catalog-page {
-  background: #F5F0E8;
+  background: #F5EDE0;
 }
 
 .catalog-title {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Lexend', serif;
   font-size: 1.75rem;
   letter-spacing: 3px;
-  color: #2C2C2C;
+  color: #1C1C1C;
 }
 </style>
