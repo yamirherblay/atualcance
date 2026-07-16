@@ -61,8 +61,8 @@ onUnmounted(() => {
   top: 0;
   left: 0;
   right: 0;
-  background: #2D4A3B;
-  color: #E8A838;
+  background: #1A2F2B;
+  color: #C84B31;
   overflow: hidden;
   display: flex;
   align-items: center;

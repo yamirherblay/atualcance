@@ -92,9 +92,9 @@ function addToCart() {
 }
 
 .preview-add {
-  border-color: #C17A4B;
-  color: #C17A4B;
-  font-family: 'DM Sans', sans-serif;
+  border-color: #C84B31;
+  color: #C84B31;
+  font-family: 'Source Sans 3', sans-serif;
   font-weight: 500;
 }
 

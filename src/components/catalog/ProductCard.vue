@@ -1,6 +1,6 @@
 <template>
   <q-card class="product-card">
-    <div class="terracota-border-top"></div>
+    <div class="vermillion-border-top"></div>
     <q-img
       :src="product.image || '/images/placeholder.svg'"
       :ratio="1"
@@ -32,7 +32,7 @@
           </template>
         </div>
         <q-badge
-          :color="product.estado === 'Disponible' ? 'blue' : 'negative'"
+          :color="product.estado === 'Disponible' ? 'positive' : 'negative'"
           :text-color="'white'"
           :label="product.estado"
           class="card-status"
@@ -136,22 +136,22 @@ function formatPrice(value: number): string {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-.product-card:hover .terracota-border-top {
+.product-card:hover .vermillion-border-top {
   border-image: none;
-  border-top: 2px solid #C17A4B;
+  border-top: 2px solid #C84B31;
 }
 
 .card-title {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.3px;
-  color: #2C2C2C;
+  color: #1C1C1C;
   line-height: 1.2;
 }
 
 .card-desc {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 0.75rem;
   line-height: 1.3;
   margin-top: 2px;
@@ -161,11 +161,11 @@ function formatPrice(value: number): string {
   font-family: 'JetBrains Mono', monospace;
   font-size: 1rem;
   font-weight: 400;
-  color: #2C2C2C;
+  color: #1C1C1C;
 }
 
 .card-status {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 0.65rem;
   font-weight: 500;
   padding: 2px 6px;
@@ -177,9 +177,9 @@ function formatPrice(value: number): string {
 }
 
 .card-add {
-  border-color: #C17A4B;
-  color: #512FAC;
-  font-family: 'DM Sans', sans-serif;
+  border-color: #C84B31;
+  color: #C84B31;
+  font-family: 'Source Sans 3', sans-serif;
   font-weight: 500;
   font-size: 0.8rem;
 }
@@ -199,11 +199,11 @@ function formatPrice(value: number): string {
 
 .sale-price {
   font-weight: 600;
-  color: #2C2C2C;
+  color: #1C1C1C;
 }
 
 .badge-oferta {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.5px;
@@ -212,7 +212,7 @@ function formatPrice(value: number): string {
 }
 
 .badge-new {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.5px;

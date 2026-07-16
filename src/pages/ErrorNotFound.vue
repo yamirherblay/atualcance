@@ -37,14 +37,14 @@ useMeta({
 }
 
 .error-code {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Lexend', serif;
   font-size: 5rem;
   letter-spacing: 6px;
   line-height: 1;
 }
 
 .error-message {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 1.1rem;
   opacity: 0.7;
   line-height: 1.5;

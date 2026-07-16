@@ -14,7 +14,7 @@
 
         <div class="about-rule q-mx-auto q-my-lg" style="width: 60px;"></div>
 
-        <div class="text-center text-terracota" style="letter-spacing: 8px; font-size: 1.2rem;">
+        <div class="text-center text-vermillion" style="letter-spacing: 8px; font-size: 1.2rem;">
           ★ ★ ★
         </div>
       </div>
@@ -41,34 +41,34 @@ useMeta({
 
 <style scoped>
 .about-page {
-  background: #F5F0E8;
+  background: #F5EDE0;
   min-height: 60vh;
 }
 
 .about-title {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Lexend', serif;
   font-size: 2rem;
   letter-spacing: 4px;
-  color: #2C2C2C;
+  color: #1C1C1C;
 }
 
 .about-rule {
   height: 2px;
-  background: #C17A4B;
+  background: #C84B31;
 }
 
 .about-content {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 1rem;
   line-height: 1.7;
-  color: #2C2C2C;
+  color: #1C1C1C;
 }
 
 .about-content p {
   margin-bottom: 1rem;
 }
 
-.text-terracota {
-  color: #C17A4B;
+.text-vermillion {
+  color: #C84B31;
 }
 </style>

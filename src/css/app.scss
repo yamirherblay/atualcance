@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500&display=swap');
 
 body {
-  font-family: 'DM Sans', sans-serif;
-  background: #F5F0E8;
-  color: #2C2C2C;
+  font-family: 'Source Sans 3', sans-serif;
+  background: #F5EDE0;
+  color: #1C1C1C;
 }
 
 .wave-divider {
@@ -21,14 +21,14 @@ body {
     right: 0;
     top: 50%;
     height: 12px;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 24'%3E%3Cpath d='M0,12 C200,0 400,24 600,12 C800,0 1000,24 1200,12' fill='none' stroke='%23C17A4B' stroke-width='1.5' opacity='0.3'/%3E%3C/svg%3E") repeat-x;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 24'%3E%3Cpath d='M0,12 C200,0 400,24 600,12 C800,0 1000,24 1200,12' fill='none' stroke='%23C84B31' stroke-width='1.5' opacity='0.3'/%3E%3C/svg%3E") repeat-x;
     background-size: 1200px 12px;
     transform: translateY(-50%);
   }
 }
 
-.terracota-border-top {
-  border-top: 2px solid #C17A4B;
+.vermillion-border-top {
+  border-top: 2px solid #C84B31;
 }
 
 .section-reveal {
@@ -61,7 +61,7 @@ body {
     position: absolute;
     inset: 0;
     opacity: 0.04;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M0,15 L60,15 M0,30 L60,30 M0,45 L60,45 M15,0 L15,60 M30,0 L30,60 M45,0 L45,60' stroke='%232D4A3B' stroke-width='0.5' fill='none'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M0,15 L60,15 M0,30 L60,30 M0,45 L60,45 M15,0 L15,60 M30,0 L30,60 M45,0 L45,60' stroke='%231A2F2B' stroke-width='0.5' fill='none'/%3E%3C/svg%3E");
     background-repeat: repeat;
     background-size: 60px 60px;
     pointer-events: none;
@@ -105,12 +105,12 @@ body {
   justify-content: center;
   width: 64px;
   height: 64px;
-  border: 1.5px solid rgba(193, 122, 75, 0.4);
+  border: 1.5px solid rgba(59, 104, 88, 0.4);
   border-radius: 50%;
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Lexend', serif;
   font-size: 0.55rem;
   letter-spacing: 1.5px;
-  color: #C17A4B;
+  color: #3B6858;
   line-height: 1.2;
   animation: sello-pulse 3s ease-in-out infinite;
 
@@ -131,7 +131,7 @@ body {
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: #E8A838;
+  background: #C84B31;
   pointer-events: none;
   z-index: 10;
   animation: cart-burst 0.5s ease-out forwards;

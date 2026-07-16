@@ -175,7 +175,7 @@ function formatPrice(n: number): string {
 .offer-tag {
   font-size: 0.65rem;
   font-weight: 600;
-  color: #E8A838;
+  color: #C84B31;
   margin-left: 3px;
   text-transform: uppercase;
 }
@@ -185,13 +185,13 @@ function formatPrice(n: number): string {
 }
 
 .empty-cart-text {
-  font-family: 'DM Serif Display', serif;
+  font-family: 'Lexend', serif;
   font-size: 1.1rem;
-  color: #2C2C2C;
+  color: #1C1C1C;
 }
 
 .empty-cart-sub {
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Source Sans 3', sans-serif;
   font-size: 0.85rem;
 }
 </style>

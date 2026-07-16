@@ -4,8 +4,8 @@
       <q-toolbar>
         <q-btn flat dense round icon="menu" @click="left = !left" class="q-mr-sm" />
         <q-toolbar-title class="row items-center">
-          <span style="font-family: 'DM Serif Display', serif; letter-spacing: 2px; font-size: 1.2rem;">Shalom</span>
-          <span class="text-grey-4 q-ml-sm" style="font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.5px;">Admin</span>
+          <span style="font-family: 'Lexend', serif; letter-spacing: 2px; font-size: 1.2rem;">A tu Alcance</span>
+          <span class="text-grey-4 q-ml-sm" style="font-family: 'Source Sans 3', sans-serif; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.5px;">Dashboard</span>
         </q-toolbar-title>
         <AdminChangeNotifications />
         <q-btn flat dense round>
@@ -60,12 +60,13 @@
 
       <div class="absolute-bottom q-pa-md text-center">
         <q-img
-          src="/images/logo.jpeg"
-          alt="Shalom"
+          src="/images/logo.png"
+          alt="A tu Alcance"
           style="width: 60px; height: 60px; border-radius: 50%;"
           class="q-mb-sm"
+          ratio="1"
         />
-        <div class="text-caption text-grey-8" style="font-family: 'DM Sans', sans-serif;">Tu tienda de confianza</div>
+        <div class="text-caption text-grey-8" style="font-family: 'Source Sans 3', sans-serif;">Tu tienda de confianza</div>
       </div>
     </q-drawer>
 
@@ -102,7 +103,7 @@ async function logout() {
       background: #F0EDE8;
 
       .q-icon {
-        color: #C17A4B !important;
+        color: #C84B31 !important;
       }
     }
   }
