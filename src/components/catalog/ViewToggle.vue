@@ -1,7 +1,7 @@
 <template>
   <div class="view-toggle-wrapper">
     <div class="row items-center q-col-gutter-md">
-      <div class="col-12 col-sm-6">
+      <div class="col-6 col-sm-6">
         <q-input
           :model-value="search"
           dense
@@ -15,8 +15,8 @@
           </template>
         </q-input>
       </div>
-      <div class="col-12 col-sm-6">
-        <div class="row justify-end q-gutter-sm view-toggle-buttons">
+      <div class="col-6 col-sm-6">
+        <div class="row justify-center q-gutter-sm view-toggle-buttons">
           <q-btn
             v-for="opt in options"
             :key="opt.value"
@@ -65,7 +65,7 @@ const options: { value: ViewMode; icon: string; tooltip: string }[] = [
 <style scoped>
 .view-toggle-wrapper {
   position: sticky;
-  top: 56px;
+  top: 112px;
   z-index: 20;
   background: #F5EDE0;
   padding: 8px 0;
