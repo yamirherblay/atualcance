@@ -216,11 +216,11 @@
 
 <script setup lang="ts">
 import { onMounted, ref, computed } from 'vue';
-import type { QTableColumn } from 'quasar';
-import { useMeta, useQuasar } from 'quasar';
+import { useMeta, useQuasar, type QTableColumn } from 'quasar';
+import { branding } from 'src/config/branding';
 
 useMeta({
-  title: 'Admin | Shalom',
+  title: `Admin | ${branding.name}`,
   meta: {
     robots: { name: 'robots', content: 'noindex, nofollow' },
   },

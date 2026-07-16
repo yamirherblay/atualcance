@@ -22,9 +22,10 @@
 
 <script setup lang="ts">
 import { useMeta } from 'quasar';
+import { branding } from 'src/config/branding';
 
 useMeta({
-  title: '404 | Shalom',
+  title: `404 | ${branding.name}`,
   meta: {
     robots: { name: 'robots', content: 'noindex, nofollow' },
   },
