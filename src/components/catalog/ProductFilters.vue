@@ -54,7 +54,7 @@ const barStyle = {
 .product-filters {
   position: sticky;
   top: 56px;
-  z-index: 10;
+  z-index: 15;
 }
 
 .cat-scroll {
