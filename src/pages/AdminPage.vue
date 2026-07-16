@@ -95,24 +95,24 @@
             <q-img :src="props.row.image" :ratio="1" style="width: 36px; height: 36px; border-radius: 2px;" />
           </q-td>
         </template>
-        <template #body-cell-id="props">
-          <q-td :props="props" style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: #6B7280;">
-            {{ props.row.id?.slice(0, 8) }}...
-          </q-td>
-        </template>
         <template #body-cell-price="props">
           <q-td :props="props" style="font-family: 'JetBrains Mono', monospace;">
             {{ formatPrice(props.row.price, props.row.currency) }}
           </q-td>
         </template>
-        <template #body-cell-disponibilidad="props">
+        <template #body-cell-estado="props">
           <q-td :props="props">
-            <q-badge
-              :label="props.row.estado"
-              :color="props.row.estado === 'Disponible' ? 'green-7' : 'red-5'"
-              dense
-              style="font-family: 'Source Sans 3', sans-serif; font-weight: 500; padding: 2px 8px;"
-            />
+            <div class="row items-center no-wrap q-gutter-xs">
+              <q-toggle
+                :model-value="props.row.estado === 'Disponible'"
+                color="green-7"
+                dense
+                size="sm"
+                :disable="togglingId === props.row.id"
+                @update:model-value="confirmToggle(props.row)"
+              />
+              <span class="text-caption">{{ props.row.estado }}</span>
+            </div>
           </q-td>
         </template>
         <template #body-cell-oferta="props">
@@ -289,7 +289,6 @@ const headerCellStyle = () => ({
 
 const columns = <QTableColumn[]>[
   { name: 'image', label: '', field: 'image', align: 'left', style: 'width: 48px' },
-  { name: 'id', label: 'ID', field: 'id', align: 'left', sortable: true },
   { name: 'name', label: 'Nombre', field: 'name', align: 'left', sortable: true },
   {
     name: 'price',
@@ -301,13 +300,7 @@ const columns = <QTableColumn[]>[
   },
   { name: 'currency', label: 'Moneda', field: 'currency', align: 'center', style: 'width: 60px' },
   { name: 'category', label: 'Categoría', field: 'category', align: 'left', sortable: true },
-  {
-    name: 'subcategory',
-    label: 'Subcategoría',
-    field: 'subcategory',
-    align: 'left',
-  },
-  { name: 'disponibilidad', label: 'Estado', field: 'estado', align: 'left' },
+  { name: 'estado', label: 'Estado', field: 'estado', align: 'left' },
   { name: 'oferta', label: 'Oferta', field: 'oferta', align: 'left' },
   { name: 'actions', label: '', field: 'actions', align: 'right' },
 ];
@@ -325,6 +318,49 @@ const filteredProducts = computed(() => {
 
 const viewDialog = ref(false);
 const viewProduct = ref<Product | null>(null);
+const togglingId = ref<string | null>(null);
+
+function confirmToggle(row: Product) {
+  const newEstado = row.estado === 'Disponible' ? 'Agotado' : 'Disponible';
+  $q.dialog({
+    title: 'Cambiar disponibilidad',
+    message: `¿Estás seguro de cambiar "${row.name}" de ${row.estado} a ${newEstado}?`,
+    cancel: { label: 'Cancelar', flat: true },
+    ok: { label: 'Aceptar', color: 'primary' },
+    persistent: true,
+  }).onOk(() => { void toggleVisibility(row, newEstado); });
+}
+
+async function toggleVisibility(row: Product, newEstado: string) {
+  togglingId.value = row.id;
+  try {
+    const { error } = await supabase
+      .from('products')
+      .update({ estado: newEstado })
+      .eq('id', row.id)
+      .eq('negocio_id', negocioId);
+    if (error) throw error;
+    const idx = products.value.findIndex((p) => p.id === row.id);
+    if (idx !== -1) {
+      const target = products.value[idx];
+      if (target) target.estado = newEstado as 'Disponible' | 'Agotado';
+    }
+    $q.notify({
+      message: `"${row.name}" ahora está ${newEstado}`,
+      color: 'positive',
+      icon: 'check_circle',
+      timeout: 2000,
+    });
+  } catch {
+    $q.notify({
+      message: 'Error al cambiar disponibilidad',
+      color: 'negative',
+      icon: 'error',
+    });
+  } finally {
+    togglingId.value = null;
+  }
+}
 
 function openView(row: Product) {
   viewProduct.value = { ...row };
