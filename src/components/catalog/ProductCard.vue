@@ -16,7 +16,7 @@
       </div>
     </q-img>
 
-    <q-card-section class="q-pa-sm">
+    <q-card-section class="q-pa-sm card-info">
       <div class="card-title">{{ product.name }}</div>
       <div v-if="product.descripcion" class="card-desc text-grey-7 ellipsis-2-lines">
         {{ product.descripcion }}
@@ -118,6 +118,9 @@ function handleAdd() {
 <style scoped>
 .product-card {
   width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   border-radius: 5px;
   overflow: hidden;
   position: relative;
@@ -134,6 +137,12 @@ function handleAdd() {
 .product-card:hover .vermillion-border-top {
   border-image: none;
   border-top: 2px solid #C84B31;
+}
+
+.card-info {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-title {

@@ -7,8 +7,14 @@
         :class="gridClass"
         :style="{ '--i': index }"
       >
+                <ProductLargeItem
+          v-if="viewMode === 'large_grid'"
+          :product="product"
+          @whatsapp="$emit('whatsapp', $event)"
+          @add-to-cart="$emit('add-to-cart', $event)"
+        />
         <ProductCard
-          v-if="viewMode !== 'list'"
+          v-else-if="viewMode === 'small_grid'"
           :product="product"
           :show-whats-app="true"
           :show-add-to-cart="true"
@@ -34,6 +40,7 @@
 import { computed } from 'vue';
 import ProductCard from './ProductCard.vue';
 import ProductListItem from './ProductListItem.vue';
+import ProductLargeItem from './ProductLargeItem.vue';
 import type { ViewMode } from './types';
 import type { Product } from 'src/stores/types';
 

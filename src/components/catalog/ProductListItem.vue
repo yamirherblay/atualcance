@@ -84,6 +84,7 @@ defineEmits<{
 
 <style scoped>
 .product-list-item {
+  height: 100%;
   border-radius: 5px;
   overflow: hidden;
   transition: box-shadow 0.2s ease;
